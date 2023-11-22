@@ -72,14 +72,14 @@ class PeopleViewModel (
       if(value != _imagePath )  _imagePath = value
    }
 
-   // State errorMessage
-   private var _errorMessage: String? by mutableStateOf(value = null)
-   val errorMessage: String?
-      get() = _errorMessage
-   fun onErrorMessage(value: String?, pErrorFrom: String?) {
-      if(value != _errorMessage) _errorMessage = value
-      errorFrom = pErrorFrom
-   }
+//   // State errorMessage
+//   private var _errorMessage: String? by mutableStateOf(value = null)
+//   val errorMessage: String?
+//      get() = _errorMessage
+//   fun onErrorMessage(value: String?, pErrorFrom: String?) {
+//      if(value != _errorMessage) _errorMessage = value
+//      errorFrom = pErrorFrom
+//   }
    // error handling
    fun onErrorAction() {
       logDebug(tag, "onErrorAction()")
@@ -163,7 +163,7 @@ class PeopleViewModel (
          _coroutineScope.async {
             return@async _repository.addAll(peopleDto, _coroutineContext)
          }.await()
-         logDebug(PeopleViewModel.tag, "==> ${people.size} people were written to the repository")
+         logDebug(tag, "==> ${people.size} people were written to the repository")
 
          // reading from repository person by person
 //         val deferredRead: Deferred<MutableList<Person>> = _coroutineScope.async {

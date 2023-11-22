@@ -14,8 +14,6 @@ import de.rogallab.mobile.ui.navigation.AppNavHost
 import de.rogallab.mobile.ui.people.PeopleViewModel
 import de.rogallab.mobile.ui.people.PeopleViewModelFactory
 import de.rogallab.mobile.ui.theme.AppTheme
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 
 class MainActivity : BaseActivity(tag) {
 

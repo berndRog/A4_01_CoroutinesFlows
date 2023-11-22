@@ -390,7 +390,7 @@ fun validatePhone(
 /*
      Check Input f
  */
-fun checkInput(context: Context, viewModel: PeopleViewModel, fromScreen: String) {
+fun checkInput(context: Context, viewModel: PeopleViewModel) {
    if (viewModel.firstName.isEmpty() || viewModel.firstName.length < 2) {
 //    viewModel.onErrorMessage(getString(context, R.string.errorFirstNameTooShort), fromScreen)
       val message = getString(context, R.string.errorFirstNameTooShort)

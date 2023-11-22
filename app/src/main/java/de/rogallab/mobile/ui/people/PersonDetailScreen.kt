@@ -49,7 +49,7 @@ fun PersonDetailScreen(
    navController: NavController,
    viewModel: PeopleViewModel,
 ) {
-   val tag: String = "ok>PersonDetailScreen ."
+   val tag = "ok>PersonDetailScreen ."
 
    var savedPerson by remember { mutableStateOf(Person("", "")) }
 

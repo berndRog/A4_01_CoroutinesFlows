@@ -1,7 +1,6 @@
 package de.rogallab.mobile.domain.entities
 
 import de.rogallab.mobile.domain.utilities.as8
-import okhttp3.internal.concurrent.Task
 import java.util.UUID
 
 class Person (

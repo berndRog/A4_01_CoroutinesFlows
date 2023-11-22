@@ -13,7 +13,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import de.rogallab.mobile.ui.people.PeopleListScreen
-import de.rogallab.mobile.ui.people.PeopleListScreenStart
 import de.rogallab.mobile.ui.people.PeopleViewModel
 import de.rogallab.mobile.ui.people.PersonDetailScreen
 import de.rogallab.mobile.ui.people.PersonInputScreen

@@ -246,9 +246,3 @@ fun PersonListItem(
       Divider(modifier = Modifier.padding(vertical = 8.dp))
    }
 }
-
-inline fun <reified T> MutableList<*>.asMutableListOfType(): MutableList<T>? =
-   if (all { it is T })
-      @Suppress("UNCHECKED_CAST")
-      this as MutableList<T>
-   else null

@@ -3,8 +3,6 @@ package de.rogallab.mobile.ui.people
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import de.rogallab.mobile.domain.IPeopleRepository
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 
 class PeopleViewModelFactory(
    private val _repository: IPeopleRepository
