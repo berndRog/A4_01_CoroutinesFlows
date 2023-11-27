@@ -51,9 +51,21 @@ fun PersonDetailScreen(
 ) {
    val tag = "ok>PersonDetailScreen ."
 
-   var savedPerson by remember { mutableStateOf(Person("", "")) }
 
-   val uiStateInDeFlow by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+   BackHandler(
+      enabled = true,
+      onBack = {
+         logInfo(tag, "Back Navigation (Abort)")
+         navController.popBackStack(
+            route = NavScreen.PeopleList.route,
+            inclusive = false
+         )
+      }
+   )
+
+   val uiStateFlow by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+
+   var savedPerson by remember { mutableStateOf(Person("", "")) }
 
    id?.let {
       logDebug(tag, "ReadById()")
@@ -67,16 +79,6 @@ fun PersonDetailScreen(
       )
    }
 
-   BackHandler(
-      enabled = true,
-      onBack = {
-         logInfo(tag, "Back Navigation (Abort)")
-         navController.popBackStack(
-            route = NavScreen.PeopleList.route,
-            inclusive = false
-         )
-      }
-   )
 
    val snackbarHostState = remember { SnackbarHostState() }
 
@@ -109,7 +111,7 @@ fun PersonDetailScreen(
          }
       }) { innerPadding ->
 
-      when (uiStateInDeFlow) {
+      when (uiStateFlow) {
 
          UiState.Empty -> {}
          UiState.Loading -> {}
@@ -137,7 +139,7 @@ fun PersonDetailScreen(
          }
 
          is UiState.Error -> {
-            val message = (uiStateInDeFlow as UiState.Error).message
+            val message = (uiStateFlow as UiState.Error).message
             val coroutineScope = rememberCoroutineScope()
             val job = coroutineScope.launch() {
                showErrorMessage(

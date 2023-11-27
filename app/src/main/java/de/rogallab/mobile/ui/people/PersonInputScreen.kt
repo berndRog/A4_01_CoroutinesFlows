@@ -58,7 +58,7 @@ fun PersonInputScreen(
    val context = LocalContext.current
    val snackbarHostState = remember { SnackbarHostState() }
 
-   val uiStateInDeFlow by viewModel.uiStateFlow.collectAsStateWithLifecycle()
+   val uiStateFlow by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
    Scaffold(
       topBar = {
@@ -67,11 +67,11 @@ fun PersonInputScreen(
             navigationIcon = {
                IconButton(onClick = {
                   logInfo(tag, "Reverse Navigation (Up) viewModel.add()")
-                  checkInput(context, viewModel, "PersonInputScreen")
-                  if (uiStateInDeFlow !is UiState.Error) {
+                  checkInput(context, viewModel)
+                  if (uiStateFlow !is UiState.Error) {
                      viewModel.add()
                   }
-                  if (uiStateInDeFlow !is UiState.Error) {
+                  if (uiStateFlow !is UiState.Error) {
                      navController.navigate(route = NavScreen.PeopleList.route) {
                         popUpTo(route = NavScreen.PeopleList.route) { inclusive = true }
                      }
@@ -93,7 +93,7 @@ fun PersonInputScreen(
       }
    ) { innerPadding ->
 
-      when (uiStateInDeFlow) {
+      when (uiStateFlow) {
          UiState.Empty, UiState.Loading -> {
             logDebug(tag,"Empty ir Loading")
          } // nothing to do
@@ -120,7 +120,7 @@ fun PersonInputScreen(
          }
 
          is UiState.Error -> {
-            val message = (uiStateInDeFlow as UiState.Error).message
+            val message = (uiStateFlow as UiState.Error).message
 
             LaunchedEffect(true ) {
                showErrorMessage(
